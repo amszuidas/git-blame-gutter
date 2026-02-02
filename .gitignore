@@ -1,0 +1,11 @@
+out/
+node_modules/
+.vscode-test/
+*.vsix
+.DS_Store
+.history/
+coverage/
+npm-debug.log
+yarn-error.log
+test_files/
+thumbs.db
