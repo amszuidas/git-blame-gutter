@@ -67,6 +67,12 @@ export function activate(context: vscode.ExtensionContext) {
                 blameGutter.update(editor);
             }
         }),
+        vscode.window.onDidChangeActiveColorTheme(() => {
+            blameGutter.updateTheme();
+            if (vscode.window.activeTextEditor) {
+                blameGutter.update(vscode.window.activeTextEditor);
+            }
+        }),
         blameGutter
     );
 
@@ -83,9 +89,19 @@ class GitBlameGutter {
     private enabled: boolean = true;
     private updateTimeout: NodeJS.Timeout | undefined;
     private blameCache: Map<string, BlameLine[]> = new Map();
+    private isDarkTheme: boolean = false;
 
     constructor() {
         this.baseDecorationType = vscode.window.createTextEditorDecorationType(DECORATION_STYLES);
+        this.updateTheme();
+    }
+
+    /**
+     * Updates the internal theme state based on the current VS Code theme.
+     */
+    public updateTheme() {
+        const kind = vscode.window.activeColorTheme.kind;
+        this.isDarkTheme = kind === vscode.ColorThemeKind.Dark || kind === vscode.ColorThemeKind.HighContrast;
     }
 
     /**
@@ -264,6 +280,7 @@ class GitBlameGutter {
                     ratio = (maxTime - info.time) / (maxTime - minTime);
                 }
                 const color = this.getColorFromRatio(ratio);
+                const textColor = this.isDarkTheme ? '#cccccc' : '#555555';
 
                 decorations.push({
                     range,
@@ -271,7 +288,7 @@ class GitBlameGutter {
                         before: {
                             contentText: text,
                             backgroundColor: color,
-                            color: '#555555'
+                            color: textColor
                         }
                     }
                 });
@@ -298,12 +315,23 @@ class GitBlameGutter {
      * @returns An HSL color string.
      */
     private getColorFromRatio(ratio: number): string {
-        // GoLand-like soft blue palette
-        // ratio 0 (Newest) -> hsl(210, 50%, 85%) - Soft Blue
-        // ratio 1 (Oldest) -> hsl(210, 10%, 96%) - Very Light Grey-Blue
         const h = 210;
-        const s = Math.round(50 - (ratio * 40)); // 50% -> 10%
-        const l = Math.round(85 + (ratio * 11)); // 85% -> 96%
+        let s: number;
+        let l: number;
+
+        if (this.isDarkTheme) {
+            // Dark Mode
+            // Newest (0) -> hsl(210, 50%, 30%) - Visible Blue
+            // Oldest (1) -> hsl(210, 10%, 15%) - Dark Grey-Blue
+            s = Math.round(50 - (ratio * 40)); // 50% -> 10%
+            l = Math.round(30 - (ratio * 15)); // 30% -> 15%
+        } else {
+            // Light Mode (GoLand-like soft blue palette)
+            // Newest (0) -> hsl(210, 50%, 85%) - Soft Blue
+            // Oldest (1) -> hsl(210, 10%, 96%) - Very Light Grey-Blue
+            s = Math.round(50 - (ratio * 40)); // 50% -> 10%
+            l = Math.round(85 + (ratio * 11)); // 85% -> 96%
+        }
         
         return `hsl(${h}, ${s}%, ${l}%)`;
     }
