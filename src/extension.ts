@@ -321,16 +321,16 @@ class GitBlameGutter {
 
         if (this.isDarkTheme) {
             // Dark Mode
-            // Newest (0) -> hsl(210, 50%, 30%) - Visible Blue
-            // Oldest (1) -> hsl(210, 10%, 15%) - Dark Grey-Blue
-            s = Math.round(50 - (ratio * 40)); // 50% -> 10%
-            l = Math.round(30 - (ratio * 15)); // 30% -> 15%
+            // Newest (0) -> hsl(210, 60%, 35%) - More vibrant/visible Blue
+            // Oldest (1) -> hsl(210, 10%, 12%) - Very dark, blends with bg
+            s = Math.round(60 - (ratio * 50)); // 60% -> 10%
+            l = Math.round(35 - (ratio * 23)); // 35% -> 12%
         } else {
-            // Light Mode (GoLand-like soft blue palette)
-            // Newest (0) -> hsl(210, 50%, 85%) - Soft Blue
-            // Oldest (1) -> hsl(210, 10%, 96%) - Very Light Grey-Blue
-            s = Math.round(50 - (ratio * 40)); // 50% -> 10%
-            l = Math.round(85 + (ratio * 11)); // 85% -> 96%
+            // Light Mode
+            // Newest (0) -> hsl(210, 65%, 75%) - Deeper Blue
+            // Oldest (1) -> hsl(210, 5%, 98%) - Almost White
+            s = Math.round(65 - (ratio * 60)); // 65% -> 5%
+            l = Math.round(75 + (ratio * 23)); // 75% -> 98%
         }
         
         return `hsl(${h}, ${s}%, ${l}%)`;
