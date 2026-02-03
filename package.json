@@ -1,8 +1,20 @@
 {
   "name": "git-blame-gutter",
   "displayName": "Git Blame Gutter",
+  "publisher": "amszuidas",
   "description": "Show git blame info in the editor gutter with date-based blue shading.",
   "version": "0.0.1",
+  "icon": "images/icon.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/amszuidas/git-blame-gutter"
+  },
+  "keywords": [
+    "git",
+    "blame",
+    "gutter",
+    "history"
+  ],
   "engines": {
     "vscode": "^1.90.0"
   },
