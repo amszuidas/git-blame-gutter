@@ -1,4 +1,4 @@
-# ![Git Blame Gutter Icon](./images/icon.png) Git Blame Gutter
+# <img src="./images/icon.png" width="40" style="vertical-align: middle;"> Git Blame Gutter
 
 **Git Blame Gutter** is a Visual Studio Code extension that displays Git blame information directly in the editor gutter. It provides a quick and unobtrusive way to see who last modified a line and when, using a visual heat map to indicate the age of changes.
 
