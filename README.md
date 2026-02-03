@@ -1,52 +1,75 @@
-# <img src="./images/icon.png" width="40" style="vertical-align: middle;"> Git Blame Gutter
+<div align="center">
+  <img src="./images/icon.png" width="64" alt="Git Blame Gutter Icon">
+  <h1>Git Blame Gutter</h1>
+  <p>
+    <strong>A visual and unobtrusive way to see Git blame information in VS Code.</strong>
+  </p>
+</div>
 
-**Git Blame Gutter** is a Visual Studio Code extension that displays Git blame information directly in the editor gutter. It provides a quick and unobtrusive way to see who last modified a line and when, using a visual heat map to indicate the age of changes.
+<br>
 
-![Git Blame Gutter Screenshot](./images/screenshot.png)
+**Git Blame Gutter** displays Git blame information directly in the editor gutter. It helps you quickly identify who last modified a line and when, using a visual heat map to indicate the age of changes.
 
-## Features
+<div align="center">
+  <img src="./images/screenshot.png" alt="Git Blame Gutter Screenshot" width="500">
+</div>
 
-*   **Inline Blame Information**: Shows the commit date and author name in the gutter for every line.
-*   **Age-Based Coloring**: Uses a dynamic blue color scale to visualize the age of commits.
-    *   **Darker/Softer Blue**: Recent changes.
-    *   **Lighter/Faded Blue**: Older changes.
-*   **Real-time Updates**: Automatically updates blame information when you save or switch files.
-*   **Unobtrusive UI**: Blame information is displayed in a dedicated gutter area, keeping your code clean.
-*   **Toggleable**: Easily enable or disable the gutter via a command.
+## ✨ Features
 
-## Requirements
+- **Inline Blame Info**: Instantly see the commit date and author in the gutter.
+- **Dynamic Heatmap**:
+  - **Darker Blue**: Recent changes.
+  - **Faded Blue**: Older changes.
+- **Real-time Updates**: Blame info refreshes automatically on save or file switch.
+- **Clean UI**: Unobtrusive design that keeps your code readable.
+- **Toggleable**: Enable or disable with a simple command.
 
-*   **Git**: Git must be installed and available in your system's PATH.
-*   The file must be part of a Git repository.
+## 🚀 Installation
 
-## Usage
+1. Open **Visual Studio Code**.
+2. Go to the **Extensions** view (`Cmd+Shift+X` or `Ctrl+Shift+X`).
+3. Search for `Git Blame Gutter`.
+4. Click **Install**.
 
-The extension is enabled by default. You can toggle it on or off using the Command Palette:
+Alternatively, launch VS Code Quick Open (`Cmd+P` or `Ctrl+P`), paste the following command, and press enter:
 
-1.  Open the Command Palette (`Cmd+Shift+P` on macOS or `Ctrl+Shift+P` on Windows/Linux).
-2.  Type **Git Blame Gutter: Toggle** and press Enter.
+```bash
+ext install amszuidas.git-blame-gutter
+```
 
-## Extension Settings
+## 📖 Usage
 
-Currently, this extension does not have configurable settings. It uses a fixed width and color scheme optimized for readability.
+The extension is **active by default** upon installation.
 
-## Known Issues
+To toggle the gutter visibility:
 
-*   Very large files may take a moment to process the blame information.
-*   Uncommitted changes are currently treated as "not committed yet" or ignored depending on the exact state (the extension gracefully handles this by not showing blame for uncommitted lines).
+1. Open the **Command Palette** (`Cmd+Shift+P` or `Ctrl+Shift+P`).
+2. Run the command: `Git Blame Gutter: Toggle`.
 
-## Release Notes
+## ⚙️ Requirements
 
-### 0.0.1
+- **Git**: Must be installed and available in your system's `PATH`.
+- The open file must be part of a **Git repository**.
 
-*   Initial release of Git Blame Gutter.
-*   Basic blame functionality with age-based coloring.
+## 🔧 Settings
 
-## License
+Currently, **Git Blame Gutter** is designed to be zero-config with an optimized fixed width and color scheme. Customization options may be added in future releases.
 
-[MIT](LICENSE.txt)
+## 📝 Known Issues
+
+- **Large Files**: Processing blame for very large files might have a slight delay.
+- **Uncommitted Changes**: Lines with uncommitted changes are currently skipped to maintain clarity.
+
+## 🤝 Contributing
+
+Contributions are welcome! If you have suggestions or want to report a bug, please open an issue or submit a pull request on [GitHub](https://github.com/amszuidas/git-blame-gutter).
+
+## 📄 License
+
+This project is licensed under the [MIT License](LICENSE.txt).
 
 ---
 
-**Enjoying Git Blame Gutter?**  
-If you find this extension helpful, please consider leaving a review on the Marketplace!
+<div align="center">
+  <sub>Made with ❤️ by <a href="https://github.com/amszuidas">amszuidas</a></sub>
+</div>
