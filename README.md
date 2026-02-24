@@ -26,16 +26,36 @@
 
 ## 🚀 Installation
 
-1. Open **Visual Studio Code**.
-2. Go to the **Extensions** view (`Cmd+Shift+X` or `Ctrl+Shift+X`).
-3. Search for `Git Blame Gutter`.
-4. Click **Install**.
+Since this extension is not yet published to the VS Code Marketplace, you can install it from the source code:
 
-Alternatively, launch VS Code Quick Open (`Cmd+P` or `Ctrl+P`), paste the following command, and press enter:
+1. **Clone the repository** (if you haven't already):
+   ```bash
+   git clone https://github.com/amszuidas/git-blame-gutter.git
+   cd git-blame-gutter
+   ```
 
-```bash
-ext install amszuidas.git-blame-gutter
-```
+2. **Install dependencies and compile**:
+   ```bash
+   npm install
+   npm run compile
+   ```
+
+3. **Package the extension**:
+   ```bash
+   npx vsce package
+   ```
+   This will generate a `.vsix` file (e.g., `git-blame-gutter-0.0.1.vsix`) in the project root.
+
+4. **Install the .vsix file**:
+   - **Command Line**:
+     ```bash
+     code --install-extension git-blame-gutter-0.0.1.vsix
+     ```
+   - **VS Code UI**:
+     1. Go to the **Extensions** view (`Cmd+Shift+X` or `Ctrl+Shift+X`).
+     2. Click the `...` (Views and More Actions) menu in the top-right corner.
+     3. Select **Install from VSIX...**.
+     4. Choose the generated `.vsix` file.
 
 ## 📖 Usage
 
